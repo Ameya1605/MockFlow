@@ -1,0 +1,6 @@
+node_modules/
+out/
+*.vsix
+body.json
+.env
+.vscode-test/

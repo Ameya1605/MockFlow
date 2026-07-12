@@ -1,0 +1,53 @@
+{
+  "name": "mockflow-ai",
+  "displayName": "MockFlow AI",
+  "description": "Zero-Code Behavioral API Mocking for local development",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mockflow-sidebar-view",
+          "title": "MockFlow AI",
+          "icon": "$(radio-tower)"
+        }
+      ]
+    },
+    "views": {
+      "mockflow-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "mockflowSidebar",
+          "name": "Control Panel"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.0.0",
+    "@types/pluralize": "^0.0.33",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pluralize": "^8.0.0",
+    "ts-morph": "^21.0.1"
+  }
+}
