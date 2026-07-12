@@ -1,5 +1,7 @@
   import * as http from 'http';
-  import * as vscode from 'vscode';
+import * as path from 'path';
+import * as vscode from 'vscode';
+import * as dotenv from 'dotenv';
   import { SidebarProvider } from './panels/SidebarProvider';
   import { setChaosConfig, startServer, stopServer } from './server';
 
@@ -8,6 +10,8 @@
   let sidebarProvider: SidebarProvider | undefined;
 
   export function activate(context: vscode.ExtensionContext): void {
+    dotenv.config({ path: path.join(context.extensionPath, '.env') });
+
     sidebarProvider = new SidebarProvider(context.extensionUri, {
       onStart: async () => {
         if (serverInstance) {
@@ -18,6 +22,13 @@
         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
         if (!workspaceFolder) {
           vscode.window.showErrorMessage('Please open a folder/workspace before starting the MockFlow AI server.');
+          return;
+        }
+
+        if (!process.env.GEMINI_API_KEY?.trim()) {
+          vscode.window.showErrorMessage(
+            'GEMINI_API_KEY is not set. Add it to a .env file in the extension folder, or set it as an environment variable, then reload VS Code.'
+          );
           return;
         }
 

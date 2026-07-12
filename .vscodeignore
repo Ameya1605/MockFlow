@@ -1,0 +1,12 @@
+.vscode/**
+src/**
+.gitignore
+.env
+.env.example
+body.json
+test-integration.js
+tsconfig.json
+**/*.map
+**/.eslintrc.json
+node_modules/**
+.git/**

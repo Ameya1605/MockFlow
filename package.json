@@ -3,6 +3,12 @@
   "displayName": "MockFlow AI",
   "description": "Zero-Code Behavioral API Mocking for local development",
   "version": "0.0.1",
+  "publisher": "ameya1605",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ameya1605/MockFlow.git"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -35,7 +41,7 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "compile": "node esbuild.js",
     "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
@@ -43,9 +49,12 @@
     "@types/node": "^20.0.0",
     "@types/pluralize": "^0.0.33",
     "@types/vscode": "^1.85.0",
+    "cross-env": "^10.1.0",
+    "esbuild": "^0.28.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^4.18.2",
     "pluralize": "^8.0.0",
     "ts-morph": "^21.0.1"
